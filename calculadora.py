@@ -1,46 +1,33 @@
-import streamlit as st  # Importa a biblioteca Streamlit para criar interfaces web interativas
 
-st.title('Calculadora simples')  # Define o título da aplicação
+def soma(a, b):
+    return a + b
 
-# Cria dois campos numéricos para entrada dos operadores
-op1 = st.number_input('Operador 1:', value=0.0)  
-op2 = st.number_input('Operador 2:', value=0.0)
+def subtrai(a, b):
+    return a - b
 
-# Função que realiza o cálculo com base na operação escolhida
-def calcular(op, op1, op2):
-    if op == '+':  # Soma
-        return op1 + op2
-    if op == '-':  # Subtração
-        return op1 - op2 
-    if op == '*':  # Multiplicação
-        return op1 * op2
-    if op == '/':  # Divisão
-        return op1 / op2
+def multiplica(a, b):
+    return a * b
 
-# Divide a interface em 4 colunas para os botões das operações
-col1, col2, col3, col4 = st.columns(4)
+def divide(a, b):
+    if b == 0:
+        return "Erro: divisão por zero"
+    return a / b
 
-with col1:
-    if st.button('\+'):  # Botão de soma
-        resultado = calcular('+', op1, op2)
-        st.success(f'resultado: {resultado}')  # Exibe o resultado em verde
+if __name__ == "__main__":
+    print("Calculadora Simples")
+    print("Operações disponíveis: +, -, *, /")
+    a = float(input("Digite o primeiro número: "))
+    op = input("Digite a operação (+, -, *, /): ")
+    b = float(input("Digite o segundo número: "))
 
-with col2:
-    if st.button('\-'):  # Botão de subtração
-        resultado = calcular('-', op1, op2)
-        st.success(f"resultado {resultado}")  # Exibe o resultado em verde
-
-with col3:
-    if st.button('\*'):  # Botão de multiplicação
-        resultado = calcular('*', op1, op2)
-        st.success(f"resultado {resultado}")  # Exibe o resultado em verde
-
-with col4:
-    if st.button('/'):  # Botão de divisão
-        if op2 == 0:  # Verifica divisão por zero
-            st.error('erro: de divisão por 0')  # Exibe mensagem de erro em vermelho
-        else:
-            resultado = calcular('/', op1, op2)
-            st.success(f'resultado: {resultado}')  # Exibe o resultado em verde
-
-               
+    if op == "+":
+        print("Resultado:", soma(a, b))
+    elif op == "-":
+        print("Resultado:", subtrai(a, b))
+    elif op == "*":
+        print("Resultado:", multiplica(a, b))
+    elif op == "/":
+        print("Resultado:", divide(a, b))
+    else:
+        print("Operação inválida")
+    print("Obrigado por usar a calculadora!")   
